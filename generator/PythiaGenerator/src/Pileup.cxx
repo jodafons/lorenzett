@@ -79,8 +79,8 @@ StatusCode Pileup::execute(  generator::Event &event )
         break;
       }
 
-      const auto mb_event_t = m_generator.rndm.gauss() * m_sigma_t;
-      const auto mb_event_z = m_generator.rndm.gauss() * m_sigma_z;
+      const auto mb_event_t = 0;//m_generator.rndm.gauss() * m_sigma_t;
+      const auto mb_event_z = 0;//m_generator.rndm.gauss() * m_sigma_z;
 
       double weight = m_generator.info.mergingWeight();
       double evtweight = m_generator.info.weight();
@@ -102,14 +102,14 @@ StatusCode Pileup::execute(  generator::Event &event )
           const double deta = abs( p->eta() - seed.eta() );
           const double dphi = abs( CaloPhiRange::diff( p->phi(), seed.phi() ) );
           
-          if ( ( deta < m_delta_eta ) && ( dphi < m_delta_phi ) ) 
-          {
+          //if ( ( deta < m_delta_eta ) && ( dphi < m_delta_phi ) ) 
+          //{
             // Pileup is always !main event
             seed.emplace_back( 0, bc_id, p->id(), p->px(), p->py(), p->pz(), p->eta(), p->phi(), 
                                p->xProd(), p->yProd(), p->zProd()+mb_event_z, p->tProd()+mb_event_t, 
                                p->e(), p->eT() ); 
 
-          }// Is inside of the minimum bias windows?
+          //}// Is inside of the minimum bias windows?
 
         }// Loop over all clusters
       }// Loop over all generated minimum bias particles

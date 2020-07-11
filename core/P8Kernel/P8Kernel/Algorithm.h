@@ -42,6 +42,8 @@ namespace generator{
       float m_sigma_t;
       /*! Used to random z for the current processs */
       float m_sigma_z;
+      /*! Max poisson output */
+      int m_nmax;
 
       /*! The pythia event generator */
       Pythia8::Pythia m_generator;

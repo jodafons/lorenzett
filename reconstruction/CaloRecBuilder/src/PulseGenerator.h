@@ -4,7 +4,7 @@
 #include "GaugiKernel/StatusCode.h"
 #include "CaloTool.h"
 #include "TPulseGenerator.h"
-
+#include "TTree.h"
 
 
 class PulseGenerator : public CaloTool
@@ -35,6 +35,11 @@ class PulseGenerator : public CaloTool
     CPK::TPulseGenerator  *m_pulseGenerator;
     /*! Output level message */
     int m_outputLevel;
+
+    mutable TTree *t1;
+    mutable std::vector<std::vector<float>> tree_pulse_sum;
+    mutable std::vector<std::vector<float>> tree_rawEnergySamples;
+    mutable std::vector<float> tree_acc_rawEnergySamples;
 };
 
 #endif
